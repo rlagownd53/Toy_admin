@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+.side_menu_bar {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 200px;
+	height: 100%;
+	background-color: #819FF7;
+}
+.wrap {
+	position: absolute;
+	left: 200px;
+	border: 1px solid;
+	height: 100%;
+}
+.main {
+	position: relative;
+	top: 100px;
+	left: 100px;
+	width: 1000px;
+	padding: 10px;
+}
+.main_logo {
+	display: block;
+	margin: 0 auto;
+	width: 150px;
+	height: 100px;
+	text-align: center;
+}
+.side_bar_list {
+	margin-top: 50px;
+	text-align: center;
+}
+.side_bar_list span {
+	width: 45%;
+	display: inline-table;
+}
+.side_bar_list span a {
+	color: white;
+	vertical-align: baseline;
+}
+a:hover {
+	color: white;
+}
+
+.login-box, .sign-box {
+	position: relative;
+	left: 50px;
+	width: 400px;
+}
+.footer {
+	position: relative;
+	left: 100px;
+	bottom: 100px;
+}

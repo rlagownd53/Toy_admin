@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace는 형식은 따로 없지만 패키지명과 xml이름을 넣어서 해주 -->
+<mapper namespace="com.kimhj.toy.member.memberMapper">
+
+	<resultMap type="com.kimhj.toy.member.vo.MemberVO" id="memberVO">
+		<result property="no" column="NO"/>
+		<result property="userId" column="USERID"/>
+		<result property="name" column="NAME"/>
+		<result property="nickName" column="NICKNAME"/>
+		<result property="password" column="PASSWORD"/>
+		<result property="email" column="EMAIL"/>
+		<result property="useFlag" column="USEFLAG"/>
+		<result property="createTime" column="CREATETIME"/>
+		<result property="creator" column="CREATOR"/>
+		<result property="modifyTime" column="MODIFYTIME"/>
+		<result property="modifier" column="MODIFIER"/>
+	</resultMap>
+
+	<!-- 
+		id : DAO나 Controller등 자바 내에서 불러올 떄 쓰이는 id 
+		resultType : 결과 값의 자료형 또는 Bean. Test는 *Mapper.xml에서 Alias를 취해준 자바 Bean
+	-->
+	<insert id='memberInsert' parameterType="memberVO">
+		<selectKey resultType="int" keyProperty="no" order="BEFORE" >
+			SELECT IFNULL(MAX(NO),1) FROM TB_USER
+		</selectKey>
+		INSERT INTO TB_USER(
+			NO,
+			USERID,
+			NAME,
+			NICKNAME,
+			PASSWORD,
+			EMAIL,
+			USEFLAG,
+			CREATETIME,
+			CREATER
+		) 
+		VALUE(
+			#{no},
+			#{userId},
+			#{name},
+			#{nickname},
+			#{password},
+			#{email},
+			'Y',
+			NOW(),
+			#{userId}
+		)
+	</insert>
+
+</mapper>
